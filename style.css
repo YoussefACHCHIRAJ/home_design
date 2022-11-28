@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+ :Root{
+    --Soft-orange: hsl(35, 77%, 62%);
+    --Soft-red: hsl(5, 85%, 63%);
+    --Off-white: hsl(36, 100%, 99%);
+    --Grayish-blue: hsl(233, 8%, 79%);
+    --Dark-grayish-blue: hsl(236, 13%, 42%);
+    --Very-dark-blue: hsl(240, 100%, 5%);
+
+    --ff:'Inter', sans-serif;
+    --fw400:400;
+    --fw700:700;
+    --fw800:800;
+
+    --wiPhone: 23em;
+}
+html,body{
+    overflow-x: hidden;
+}
+body{
+    padding-inline: 2em;
+}
+@media only screen and (max-width: 420px){
+    
+    body{
+    padding-inline: 1em;
+    }
+}
+/* header start */
+header{
+    margin-block: .2em;
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    overflow-x: hidden;
+}
+header .logo{
+    width: 6em;
+    min-height: 7em;
+    display:grid;
+    align-content:center;
+}
+header .btn-nav{
+    --size: 2em;
+    width: calc(var(--size) + 1.5rem);
+    height:var(--size);
+    position: absolute;
+    right: 2.7em;
+    top: 3em;
+    display: none;
+    background:none;
+    border:0;
+    outline:0;
+}
+header .btn-nav img{
+    width: 100%;
+    height: 100%;
+}
+header nav{
+    min-width: 20em;
+}
+header nav ul{
+    list-style: none;
+    display: flex;
+    gap: 1em;
+    padding: 1em;
+}
+header nav ul li{
+    color: var(--Dark-grayish-blue);
+    font-family: var(--ff);
+    font-weight: var(--fw400);
+    cursor: pointer;
+    transition: .5s ease-in-out;
+}
+header nav ul li:hover{
+    color: var(--Soft-red);
+}
+
+@media only screen and (max-width:420px){
+    header >*{
+        margin:0;
+        padding:0;
+    }
+    header{
+        width: var(--wiPhone);
+    }
+    header .btn-nav{
+        display: block;
+        z-index: 9999;
+    }
+    header nav{
+        min-width: 15em;
+        min-height: 100vh;
+        position: absolute;
+        right: 0;
+        top:0;
+        background-color: var(--Off-white);
+        transform: translateX(100%);  
+        transition: transform 1s ease;
+
+        /* display:none;*/
+    }
+    header .toggle-nav{
+        animation: menuMove 1s ease;
+        transform: translateX(0);
+    }
+    @keyframes menuMove{
+        0%{
+            transform: rotate(0) translate(100% , -100%);
+        }
+        25%{
+            transform: rotate(12deg) translate(70% , -60%);
+        }
+        50%{
+            transform: rotate(-24deg) translate(0 , 0);
+        }
+        75%{
+            transform: rotate(-12deg);
+        }
+        100%{
+            transform: rotate(0);
+        }
+    }
+    header nav ul{
+        flex-direction: column;
+        gap: 1em;
+        margin-top: 10em;
+        font-weight: var(--fw700)
+    } 
+        
+}
+/* header end */
+/* main start */
+main{
+    width: 100%;
+    min-height: 82vh;
+    display:grid;
+    grid-template-columns: minmax(55em,65em) minmax(20em,30em);
+    gap: .7em;
+    
+}
+@media only screen and (max-width:420px){
+    main{
+        width: var(--wiPhone);
+        grid-template-columns: 1;
+    }
+}
+main .hero{
+    min-height: 25em;
+    grid-column: 1/2;
+}
+main .hero .boxImage{
+    width: 100%;
+    min-height: 12em;
+}
+main .hero .boxImage img{
+    width: 100%;
+    height: 100%;
+}
+main .hero .content{
+    display: flex;
+    gap: .3em;
+}
+main .hero .content h1{
+    width: 18em;
+    font-size: 3rem;
+    font-family: var(--ff);
+    color: var(--Very-dark-blue);
+}
+main .hero .content .innerContent p{
+    font-size: 0.9375rem;
+    padding: 1.5em;
+    letter-spacing: .2px;
+    line-height: 1.5;
+    font-family: var(--ff);
+}
+main .hero .content .innerContent button{
+    width: 10em;
+    min-height: 3em;
+    font-size: 1.1rem;
+    padding: 1em 1.4em;
+    color: var(--Off-white);
+    font-weight:var(--fw700);
+    background-color: var(--Soft-red);
+    letter-spacing:2px;
+    margin-block-start: .3em;
+    margin-inline-start: 1.2em;
+    cursor:pointer;
+    transition: .5s ease-in-out;
+    border:0;
+}
+main .hero .content .innerContent button:hover{
+    background-color: var(--Very-dark-blue);
+}
+/* hero phone */
+@media only screen and (max-width:420px){
+    main .hero{
+        width: var(--wiPhone);
+        grid-column: 1/1;
+        margin-bottom: 2em;
+    }
+    main .hero .content{
+        display: flex;
+        flex-direction: column;
+    }
+    main .hero .content h1{
+        width: 7em;
+        font-size: 2.5rem;
+    }
+    main .hero .content .innerContent p{
+        font-size: 0.9rem;
+        padding: 0;
+        line-height: 2;
+    }
+    main .hero .content .innerContent button{
+        margin-block: 1.5em;
+        margin-inline-start: 0;
+    }
+}
+/* hero phone */
+main .aside{
+    background-color: var(--Very-dark-blue);
+    min-height:22em;
+    padding: 1em 1.5em;
+    color: #fff;
+    grid-column: 2/3;
+}
+main .aside h2{
+    font-size: 4em;
+    color: var(--Soft-orange);
+    font-weight: var(--fw700);
+    font-family: var(--ff);
+    margin-bottom: .5em;
+}
+main .aside div{
+    padding-block: 2em;
+    border-bottom: 1px solid var(--Dark-grayish-blue);
+}
+main .aside div:nth-child(2){
+    padding-top:0;
+}
+main .aside div:nth-child(4){
+    border:0;
+}
+main .aside div h3{
+    font-weight: var(--fw700);
+    font-family: var(--ff);
+    margin-block-end: 1em;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+}
+main .aside div h3:hover{
+    color: var(--Soft-orange);
+}
+main .aside div p{
+    font-size: .9rem;
+    font-family: var(--ff);
+    line-height: 1.5;   
+}
+/* aside phone */
+@media only screen and (max-width: 420px){
+    main .aside{
+        width: var(--wiPhone);
+        grid-column: 1;
+    }
+}
+/* aside phone */
+main .bottom{
+    grid-column: 1/3;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    margin-block: 2em;
+}
+main .bottom .content{
+    display:flex;
+    gap: .7em;
+}
+main .bottom .content .img-box{
+    width: 9em;
+    height: 10em;
+}
+main .bottom .content .img-box img{
+    width: 100%;
+    height: 100%;
+}
+main .bottom .content .innerContent h2{
+    font-size: 1.7rem;
+    font-weight: var(--fw700);
+    font-family: var(--ff);
+    color: var(--Grayish-blue);
+    letter-spacing: 2px;
+}
+main .bottom .content .innerContent h3{
+    font-size: 1.2rem;
+    font-family: var(--ff);
+    font-weight: var(--fw700);
+    color: var(--Very-dark-blue);
+    padding-block: .2em;
+}
+main .bottom .content .innerContent p{
+    font-size: .9rem;
+    font-family: var(--ff);
+    font-weight: var(--fw400);
+    color: var(--Dark-grayish-blue);
+    padding-inline-end: 10em;
+}
+/* bottom phone */
+@media only screen and (max-width: 420px){
+    
+    main .bottom{
+        width: var(--wiPhone);
+        grid-column: 1;
+        display:flex;
+        flex-direction: column;
+        align-items:initial;
+        justify-content:initial;
+        gap: 2em;
+    }
+    main .bottom .content .img-box{
+        width: 20em;
+        height: 10em;
+    }
+    main .bottom .content h3{
+        margin-block: .5em;
+    }
+    main .bottom .content .innerContent p{
+        width: 17em;
+        line-height: 2;
+        padding-inline-end: 0;
+        margin-top: .5em;
+    }
+}
+/* bottom phone */
+/* main end */
+.attribution{
+    text-align: center;
+    font-weight: var(--fw700);
+    font-family: var(--ff);
+    margin-bottom: 1em;
+    color: var(--Dark-grayish-blue);
+    
+}
+.attribution >*{
+    opacity: .55;
+}
+.attribution a,span{
+    color: var(--Very-dark-blue);
+    cursor: pointer;
+    transition: all .5s ease;
+}
+.attribution span{
+    display: inline-block;
+}
+.attribution span:hover{
+    color: var(--Soft-red);
+    transform: scale(1.08) translateY(-10px);
+    opacity: 1;
+}
+
